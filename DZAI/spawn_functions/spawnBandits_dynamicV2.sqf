@@ -34,8 +34,8 @@ if (!((vehicle _targetPlayer) isKindOf "Man")) then {
 
 _playerPos = ASLtoATL getPosASL _targetPlayer;
 _playerDir = getDir _targetPlayer;
-_spawnDist = (_baseDist + random (_distVariance));
-_spawnPos = [_playerPos,_spawnDist,[(_playerDir-_dirVariance),(_playerDir+_dirVariance)],0] call SHK_pos;
+_spawnDist = _baseDist;
+_spawnPos = [_playerPos,[(_spawnDist - random (_distVariance)), (_spawnDist + random (_distVariance))],[(_playerDir-_dirVariance),(_playerDir+_dirVariance)],0] call SHK_pos;
 if (
 	(surfaceIsWater _spawnPos) or 
 	{({(isPlayer _x) && {_x != _targetPlayer}} count (_spawnPos nearEntities [["CAManBase","LandVehicle"],125])) > 0} or 
